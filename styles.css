@@ -1,21 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
-body {
-    font-family: 'Roboto', sans-serif;
+:root {
+    --ff-roboto: 'Roboto', sans-serif;
+    --ff-raj: 'Rajdhani', sans-serif;
+    --ff-open: 'Roboto', sans-serif;
 
     --fw-thin: 100;
     --fw-light: 300;
     --fw-regular: 400;
 }
 
+body {
+    font-family: var(--ff-roboto);
+}
+
+body a {
+    cursor: pointer;
+}
+
+body .home-link {
+    position: fixed;
+    top: 7vh;
+    right: 20px;
+    color: #407ce6;
+    font-weight: var(--fw-light);
+    transition: .2s ease;
+}
+
+body .home-link.invisible {
+    opacity: 0;
+}
+
 header {
+    position: fixed;
+    top: 0;
+
     width: 100%;
+    height: 50px;
     background: #f6febd;
 
     display: grid;
     place-content: center;
     padding: .75rem 0;
     font-weight: var(--fw-light);
+    transition: .2s ease;
+}
+
+header.invisible {
+    opacity: 0;
 }
 
 main {
@@ -23,6 +55,7 @@ main {
     height: 1100px;
     display: flex;
     justify-content: space-around;
+    margin-top: 50px;
 }
 
 main :is(.left-top, .right-bottom) {
@@ -44,6 +77,11 @@ main .left-top .erin-link {
     position: fixed;
     top: 7vh;
     left: 20px;
+    transition: .2s ease-in-out;
+}
+
+main .left-top .erin-link.invisible {
+    opacity: 0;
 }
 
 main .left-top .sm {
@@ -72,6 +110,7 @@ main .right-bottom {
 main .right-bottom .coming-soon {
     font-size: 4rem;
     font-weight: var(--fw-light);
+    font-family: var(--ff-open);
 }
 
 main .right-bottom .picture-box {
@@ -100,6 +139,7 @@ main .right-bottom .bottom-box {
 
 main .right-bottom .bottom-box .form-text {
     font-weight: var(--fw-light);
+    font-family: var(--ff-raj);
     font-size: 1.5rem;
     text-align: center;
     max-width: 70%;
@@ -129,8 +169,12 @@ main .right-bottom .bottom-box form input {
     width: 100%;
     height: 40px;
     border-bottom: 1.5px solid black;
-    padding: .5rem;
+    padding: .5rem .2rem;
     font-weight: var(--fw-light);
+}
+
+main .right-bottom .bottom-box form input:invalid {
+    border-bottom: 3px solid #bd0100;
 }
 
 main .right-bottom .bottom-box form button {
@@ -155,6 +199,15 @@ footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 18rem;
     font-weight: var(--fw-light);
+
+    position: relative;
+}
+
+footer p {
+    width: 350px;
+    text-align: center;
+
+    position: absolute;
+    right: calc((50vw - 350px) / 2);
 }
