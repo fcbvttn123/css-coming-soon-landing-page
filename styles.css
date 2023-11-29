@@ -68,11 +68,12 @@ main .left-top {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    position: relative;
 }
 
 main .left-top .erin-link {
     font-size: 1.3rem;
-    font-weight: var(--fw-light);
+    font-weight: var(--fw-regular);
 
     position: fixed;
     top: 7vh;
@@ -88,13 +89,53 @@ main .left-top .sm {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     row-gap: 1rem;
     width: 20px;
+    height: 100px;
 
     position: fixed;
     top: 30vh;
     left: 10px;
+}
+
+@media (max-width: 1000px) {
+    header {
+        position: relative;
+    }
+
+    main {
+        margin-top: 0;
+        flex-direction: column;
+        height: 1800px;
+    }
+    main :is(.left-top, .right-bottom) {
+        width: 100%;
+        height: 50%;
+    }
+    main .left-top .erin-link {
+        position: absolute;
+        top: 30px;
+        left: 20px;
+        font-size: 2rem;
+    }
+    main .left-top .sm {    
+        position: absolute;
+        top: 800px;
+        left: calc((100vw - 150px) / 2);
+
+        flex-direction: row;
+        row-gap: 0;
+        column-gap: 1.5rem;
+
+        width: 150px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: white;
+    }
+    main .left-top .sm i {
+        font-size: 1.5rem;
+    }
 }
 
 main .right-bottom {

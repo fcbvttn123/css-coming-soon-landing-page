@@ -13,6 +13,13 @@ observer.observe(footer)
 
 
 
+window.addEventListener("resize", e => {
+    window.innerWidth < 1000 && observer.unobserve(footer)
+})
+
+
+
+
 function showElements() {
     headerDOM.classList.add("invisible")
     erinLink.classList.add("invisible")
