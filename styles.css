@@ -36,6 +36,12 @@ body .home-link.invisible {
     opacity: 0;
 }
 
+@media (max-width: 1000px) {
+    body .home-link {
+        display: none;
+    }
+}
+
 
 
 /* Header */
@@ -87,11 +93,10 @@ main :is(.left-top, .right-bottom) {
 @media (max-width: 1000px) {
     main {
         margin-top: 0;
+        height: 250vh;
 
         flex-direction: column;
         justify-content: flex-start;
-
-        height: 250vh;
     }
     main :is(.left-top, .right-bottom) {
         width: 100%;
@@ -235,6 +240,7 @@ main .right-bottom .coming-soon {
     font-size: 4rem;
     font-weight: var(--fw-light);
     font-family: var(--ff-open);
+    text-align: center;
 }
 
 main .right-bottom .picture-box {
@@ -320,8 +326,49 @@ main .right-bottom .bottom-box form button:hover {
 }
 
 @media (max-width: 1000px) {
-    main .right-bottom {
+    main .right-bottom  {
+        justify-content: flex-start;
         height: 70%;
+        padding-top: 5rem;
+    }
+    main .right-bottom .picture-box {
+        height: 630px;
+    }
+    main .right-bottom .picture-box img:first-child {
+        align-self: flex-start;
+    }
+    main .right-bottom .picture-box img:last-child {
+        align-self: flex-end;
+    }
+    main .right-bottom .bottom-box form label {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        font-size: 1.3rem;
+        font-weight: var(--fw-light);
+    }
+    main .right-bottom .bottom-box form input {
+        padding: 0 .2rem;
+        margin-top: 1rem;
+    }
+    main .right-bottom .bottom-box form button {
+        width: 100%;
+        padding: 1rem 0;
+        margin-top: .75rem;
+
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: var(--fw-light);
+    
+        position: relative;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    main .right-bottom .picture-box img:first-child {
+        position: absolute;
     }
 }
 
@@ -349,88 +396,15 @@ footer p {
     right: calc((50vw - 350px) / 2);
 }
 
-
-
-
-/* @media (max-width: 1000px) {
-    header {
-        position: relative;
+@media (max-width: 1000px) {
+    footer {
+        background-color: #edecec;
     }
-
-    main {
-        margin-top: 0;
-        flex-direction: column;
-        height: 1800px;
-    }
-    main :is(.left-top, .right-bottom) {
+    footer p {
         width: 100%;
-        height: 50%;
+        right: 0;
     }
-    main .left-top .burger-menu {
-        display: flex;
-        align-items: center;
-
-        position: absolute;
-        top: 30px;
-        right: 20px;
-
-        width: 45px;
-        aspect-ratio: 1/1;
-    }
-    main .left-top .burger-menu::before,
-    main .left-top .burger-menu::after {
-        content: "";
-        width: 100%;
-        height: 5px;
-        border-radius: 5px;
-        background-color: black;
-        position: absolute;
-    }
-    main .left-top .burger-menu::before {
-        top: 0;
-    }
-    main .left-top .burger-menu .middle-bar {
-        width: 100%;
-        height: 5px;
-        border-radius: 5px;
-        background-color: black;
-    }
-    main .left-top .burger-menu::after {
-        bottom: 0;
-    }
-    main .left-top .erin-link {
-        position: absolute;
-        top: 30px;
-        left: 20px;
-        font-size: 2rem;
-    }
-    main .left-top .sm {    
-        position: absolute;
-        top: 800px;
-        left: calc((100vw - 150px) / 2);
-
-        flex-direction: row;
-        row-gap: 0;
-        column-gap: 1.5rem;
-
-        width: 150px;
-        height: 50px;
-        border-radius: 10px;
-        isolation: isolate;
-    }
-    main .left-top .sm::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 10px;
-        background-color: white;
-        z-index: -1;
-        opacity: .5;
-    }
-    main .left-top .sm i {
-        font-size: 1.5rem;
-    }
-} */
+}
 
 
 
@@ -440,7 +414,5 @@ footer p {
     + Burger Menu Bar 
 
     + Home Link
-
-    + RWD
 
 */
