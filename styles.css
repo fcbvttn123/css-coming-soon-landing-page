@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
+
+
+
+/* Default Setup */
+
 :root {
     --ff-roboto: 'Roboto', sans-serif;
     --ff-raj: 'Rajdhani', sans-serif;
@@ -31,9 +36,20 @@ body .home-link.invisible {
     opacity: 0;
 }
 
+@media (max-width: 1000px) {
+    body .home-link {
+        display: none;
+    }
+}
+
+
+
+/* Header */
+
 header {
     position: fixed;
     top: 0;
+    z-index: 1;
 
     width: 100%;
     height: 50px;
@@ -50,18 +66,46 @@ header.invisible {
     opacity: 0;
 }
 
+@media (max-width: 1000px) {
+    header {
+        position: relative;
+    }
+}
+
+
+
+
+/* Main Section  */
+
 main {
     width: 100%;
-    height: 1100px;
+    height: 120vh;
     display: flex;
     justify-content: space-around;
     margin-top: 50px;
+    background-color: #0964e4;
 }
 
 main :is(.left-top, .right-bottom) {
     width: 50%;
-    height: 100%;
 }
+
+@media (max-width: 1000px) {
+    main {
+        margin-top: 0;
+        height: 250vh;
+
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    main :is(.left-top, .right-bottom) {
+        width: 100%;
+    }
+}
+
+
+
+/* Main - Left Top */
 
 main .left-top {
     background-image: url("./images/huge-image.webp");
@@ -69,6 +113,41 @@ main .left-top {
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+}
+
+main .left-top .burger-menu {
+    display: none;
+    align-items: center;
+
+    position: absolute;
+    top: 30px;
+    right: 20px;
+
+    width: 45px;
+    aspect-ratio: 1/1;
+    
+    cursor: pointer;
+}
+main .left-top .burger-menu::before,
+main .left-top .burger-menu::after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background-color: black;
+    position: absolute;
+}
+main .left-top .burger-menu::before {
+    top: 0;
+}
+main .left-top .burger-menu .middle-bar {
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background-color: black;
+}
+main .left-top .burger-menu::after {
+    bottom: 0;
 }
 
 main .left-top .erin-link {
@@ -92,7 +171,6 @@ main .left-top .sm {
     justify-content: center;
     row-gap: 1rem;
     width: 20px;
-    height: 100px;
 
     position: fixed;
     top: 30vh;
@@ -100,30 +178,21 @@ main .left-top .sm {
 }
 
 @media (max-width: 1000px) {
-    header {
-        position: relative;
+    main .left-top {
+        height: 30%;
     }
-
-    main {
-        margin-top: 0;
-        flex-direction: column;
-        height: 1800px;
-    }
-    main :is(.left-top, .right-bottom) {
-        width: 100%;
-        height: 50%;
+    main .left-top .burger-menu {
+        display: flex;
     }
     main .left-top .erin-link {
-        position: absolute;
+        position: relative;
         top: 30px;
         left: 20px;
-        font-size: 2rem;
+        
+        font-size: 1.7rem;
+        font-weight: var(--fw-light);
     }
     main .left-top .sm {    
-        position: absolute;
-        top: 800px;
-        left: calc((100vw - 150px) / 2);
-
         flex-direction: row;
         row-gap: 0;
         column-gap: 1.5rem;
@@ -131,12 +200,30 @@ main .left-top .sm {
         width: 150px;
         height: 50px;
         border-radius: 10px;
+        isolation: isolate;
+
+        position: absolute;
+        top: 90%;
+        left: calc((100vw - 150px) / 2);
+    }
+    main .left-top .sm::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 10px;
         background-color: white;
+        z-index: -1;
+        opacity: .5;
     }
     main .left-top .sm i {
         font-size: 1.5rem;
     }
 }
+
+
+
+
+/* Main - Right Bottom */
 
 main .right-bottom {
     background-color: #edecec;
@@ -145,6 +232,7 @@ main .right-bottom {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     row-gap: 5rem;
 }
 
@@ -152,12 +240,14 @@ main .right-bottom .coming-soon {
     font-size: 4rem;
     font-weight: var(--fw-light);
     font-family: var(--ff-open);
+    text-align: center;
 }
 
 main .right-bottom .picture-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     column-gap: 1.5rem;
     height: 320px;
 }
@@ -173,9 +263,10 @@ main .right-bottom .picture-box img:last-child {
 main .right-bottom .bottom-box {
     display: flex;
     flex-direction: column;
-    row-gap: 3rem;
     align-items: center;
     justify-content: space-between;
+    
+    row-gap: 3rem;
 }
 
 main .right-bottom .bottom-box .form-text {
@@ -234,6 +325,58 @@ main .right-bottom .bottom-box form button:hover {
     background-color: #0a59c8;
 }
 
+@media (max-width: 1000px) {
+    main .right-bottom  {
+        justify-content: flex-start;
+        height: 70%;
+        padding-top: 5rem;
+    }
+    main .right-bottom .picture-box {
+        height: 630px;
+    }
+    main .right-bottom .picture-box img:first-child {
+        align-self: flex-start;
+    }
+    main .right-bottom .picture-box img:last-child {
+        align-self: flex-end;
+    }
+    main .right-bottom .bottom-box form label {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        font-size: 1.3rem;
+        font-weight: var(--fw-light);
+    }
+    main .right-bottom .bottom-box form input {
+        padding: 0 .2rem;
+        margin-top: 1rem;
+    }
+    main .right-bottom .bottom-box form button {
+        width: 100%;
+        padding: 1rem 0;
+        margin-top: .75rem;
+
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: var(--fw-light);
+    
+        position: relative;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    main .right-bottom .picture-box img:first-child {
+        position: absolute;
+    }
+}
+
+
+
+
+/* Footer */
+
 footer {
     width: 100%;
     padding: 2rem 0;
@@ -253,7 +396,23 @@ footer p {
     right: calc((50vw - 350px) / 2);
 }
 
+@media (max-width: 1000px) {
+    footer {
+        background-color: #edecec;
+    }
+    footer p {
+        width: 100%;
+        right: 0;
+    }
+}
 
 
 
-/* Mobile Design left */
+
+/* 
+
+    + Burger Menu Bar 
+
+    + Home Link
+
+*/
